@@ -15,8 +15,25 @@ export class WidgetsComponent implements OnInit {
 
   ngOnInit() {
     this.widgets = this.widgetsService.widgets;
+    this.reset();
   }
 
+  reset() {
+    this.selectedWidget = {
+      id: null,
+      name: '',
+      description: ''
+    }
+  }
+
+  cancel() {
+    this.reset();
+  }
+
+  save(widget) {
+    console.log('saving widget', widget);
+    this.reset();
+  }
   selected(widget) {
     this.selectedWidget = widget;
   }
