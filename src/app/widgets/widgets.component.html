@@ -1,60 +1,12 @@
 <div class="container">
-  <!-- WIDGETS LIST -->
-  <div class="col-50">
-    <md-card>
-      <md-card-header>
-        <md-card-title>
-          <h1>Widgets</h1>
-        </md-card-title>
-      </md-card-header>
-      <md-card-content>
-        <md-list>
-          <md-list-item *ngFor="let widget of widgets" (click)="selected(widget)">
-            <h3 md-line>{{widget.name}}</h3>
-            <button md-icon-button>
-              <md-icon>close</md-icon>
-            </button>
-            <p md-line>
-              {{widget.description}}
-            </p>
-          </md-list-item>
-        </md-list>
-      </md-card-content>
-    </md-card>
-  </div>
-
-  <!-- WIDGET DETAILS -->
-  <div class="col-50">
-    <md-card>
-      <md-card-header>
-        <md-card-title>
-          <h1>
-            <span *ngIf="selectedWidget?.id; else prompt">{{selectedWidget.name}}</span>
-            <ng-template #prompt>Select</ng-template>
-          </h1>
-        </md-card-title>
-      </md-card-header>
-      <form #myForm="ngForm" (submit)="save(selectedWidget)">
-        <md-card-content>
-          <md-input-container class="full-width">
-            <input #nameInput="ngModel" required
-            mdInput placeholder="Name" 
-            [(ngModel)]="selectedWidget.name" 
-            type="text" name="name">
-          </md-input-container>
-          <md-input-container class="full-width">
-            <input mdInput placeholder="Description" [(ngModel)]="selectedWidget.description" type="text" name="description">
-          </md-input-container>
-          <hr>
-          <pre>{{myForm.value | json}}</pre>
-          <hr>
-          {{nameInput.valid}}
-        </md-card-content>
-        <md-card-actions>
-          <button type="submit" [disabled]="!myForm.valid" md-button>Save</button>
-          <button type="button" md-button (click)="cancel()">Cancel</button>
-        </md-card-actions>
-      </form>
-    </md-card>
-  </div>
+  <app-widgets-list class="col-50"
+    [widgets]="widgets"
+    (selected)="selectWidget($event)"
+    (deleted)="deleteWidget($event)"
+    ></app-widgets-list>
+  <app-widget-details 
+  [widget]="selectedWidget"
+  (saved)="saveWidget($event)"
+  (cancelled)="cancel($event)"
+  class="col-50"></app-widget-details>  
 </div>

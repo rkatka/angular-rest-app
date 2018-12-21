@@ -2,8 +2,8 @@
   "items": [
     {
       "id": 1,
-      "name": "Red Item",
-      "description": "This is a red item"
+      "name": "Red Item 2",
+      "description": "This is a red item."
     },
     {
       "id": 2,
@@ -54,8 +54,8 @@
   "widgets": [
     {
       "id": 1,
-      "name": "Red Widget",
-      "description": "This is a red widget"
+      "name": "Red Widget 2",
+      "description": "This is a red widget."
     },
     {
       "id": 2,

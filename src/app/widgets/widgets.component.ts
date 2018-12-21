@@ -8,14 +8,20 @@ import { Widget } from '../shared/widget.model';
   styleUrls: ['./widgets.component.css']
 })
 export class WidgetsComponent implements OnInit {
-  selectedWidget: Widget = null;
   widgets: Widget[];
+  selectedWidget: Widget = null;
 
   constructor(private widgetsService: WidgetsService) { }
 
   ngOnInit() {
-    this.widgets = this.widgetsService.widgets;
+    this.loadWidgets();
     this.reset();
+  }
+
+  loadWidgets() {
+    this.widgetsService.loadWidgets().subscribe(
+      widgets => this.widgets = widgets
+    );
   }
 
   reset() {
@@ -26,15 +32,21 @@ export class WidgetsComponent implements OnInit {
     }
   }
 
-  cancel() {
-    this.reset();
+  selectWidget(widget){ 
+    this.selectedWidget = widget;
   }
 
-  save(widget) {
+  deleteWidget(widget) {
+    console.log('deleting widget', widget);
+  }
+
+  saveWidget(widget) {
     console.log('saving widget', widget);
     this.reset();
   }
-  selected(widget) {
-    this.selectedWidget = widget;
+
+  cancel(widget) {
+    this.reset()
   }
+
 }
