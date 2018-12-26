@@ -19,7 +19,7 @@ export class WidgetsComponent implements OnInit {
   }
 
   loadWidgets() {
-    this.widgetsService.loadWidgets().subscribe(
+    this.widgetsService.all().subscribe(
       widgets => this.widgets = widgets
     );
   }
@@ -37,12 +37,34 @@ export class WidgetsComponent implements OnInit {
   }
 
   deleteWidget(widget) {
-    console.log('deleting widget', widget);
+    this.widgetsService.delete(widget).subscribe(result=> {
+      this.loadWidgets();
+      this.reset();
+    });
   }
 
   saveWidget(widget) {
-    console.log('saving widget', widget);
-    this.reset();
+    if( !widget.id ) {
+      this.createWidget(widget)
+    } else {
+      this.updateWidget(widget)
+    }
+  }
+
+  createWidget(widget) {
+    this.widgetsService.create(widget)
+    .subscribe(result=> {
+      this.loadWidgets();
+      this.reset()
+    });
+  }
+
+  updateWidget(widget) {
+    this.widgetsService.update(widget)
+    .subscribe(result=> {
+      this.loadWidgets();
+      this.reset()
+    })
   }
 
   cancel(widget) {
