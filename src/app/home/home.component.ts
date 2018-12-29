@@ -10,6 +10,7 @@ import { Item } from '../shared/item.model';
 })
 export class HomeComponent implements OnInit {
   items: Item[];
+  myStatus = 'active';
 
   constructor(private itemsService: ItemsService) { }
 
@@ -24,5 +25,9 @@ export class HomeComponent implements OnInit {
 
   handleResults(items) {
     this.items = items;
+  }
+
+  logout($event) {
+    this.myStatus = 'Logged Out';
   }
 }

@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ItemsComponent } from './items/items.component';
+import { ItemDetailComponent } from './items/item-detail/item-detail.component';
 import { HomeComponent } from './home/home.component';
 import { WidgetsComponent } from './widgets/widgets.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'items', component: ItemsComponent},
+  {path: 'item/:id', component: ItemDetailComponent},
   {path: 'widgets', component: WidgetsComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];

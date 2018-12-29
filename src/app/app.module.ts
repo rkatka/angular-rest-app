@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -18,6 +18,9 @@ import { WidgetsComponent } from './widgets/widgets.component';
 import { WidgetsListComponent } from './widgets/widgets-list/widgets-list.component';
 import { WidgetDetailsComponent } from './widgets/widget-details/widget-details.component';
 import { ItemsSearchComponent } from './items/items-search/items-search.component';
+import { StatusComponent } from './status/status.component';
+import { NewsletterComponent } from './newsletter/newsletter.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { ItemsSearchComponent } from './items/items-search/items-search.componen
     WidgetsComponent,
     WidgetsListComponent,
     WidgetDetailsComponent,
-    ItemsSearchComponent
+    ItemsSearchComponent,
+    StatusComponent,
+    NewsletterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -37,7 +43,8 @@ import { ItemsSearchComponent } from './items/items-search/items-search.componen
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    ReactiveFormsModule
   ],
   providers: [ItemsService, WidgetsService],
   bootstrap: [AppComponent]

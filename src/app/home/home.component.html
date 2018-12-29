@@ -1,10 +1,18 @@
 <div class="container">
   <div class="col-50">
+    <md-input-container class="full-width">
+      <input type="text" mdInput placeholder="Current Status"
+      [(ngModel)]="myStatus">
+    </md-input-container>
+    <app-status [currentStatus]="myStatus" (logout)="logout($event)"></app-status>
+    <hr>
     <app-items-search (results)="handleResults($event)"></app-items-search>
     <app-items-list [items]="items" [readonly]="true"></app-items-list>
   </div>
 
   <div class="col-50">
-    <app-widgets></app-widgets>
+      <app-login></app-login>
+      <app-newsletter></app-newsletter>
+      <app-widgets></app-widgets>
   </div>
 </div>
